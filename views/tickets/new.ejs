@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add a New Ticket</h1>
+    <form action="/flights/<%= flightId %>/tickets" method="POST">
+    <fieldset>
+        <legend>Enter New Ticket Information Below</legend>
+            <label>Seat Number:
+                <input name="seat" required pattern="[A-F][1-9]\d?">
+            </label>
+            <label>Price:
+                <input name="price" type="number" min="0">
+            </label>
+            <input type="submit" value="Add Ticket">
+    </fieldset>
+    </form>
+    <a href="/flights">Back To All Flights</a>
+</body>
+</html>

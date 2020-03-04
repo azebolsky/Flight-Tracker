@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>New Flights</title>
+</head>
+<%- include('../partials/header') %> 
+<body>
+    <h1>Flights</h1>
+    <table>
+        <thead>
+            <th>Airline</th>
+            <th>Flight Number</th>
+            <th>Departure Date</th>
+        </thead>
+        <tbody>
+            <% flights.forEach(function(flight) { %>
+                <tr>
+                    <td id="airline1"><%= flight.airline %></td>
+                    <td id="flightNo1"><%= flight.flightNo %></td>
+                    <td id="departs1"><%= new Date(flight.departs).toLocaleString() %></td>
+                    <td><a href="/flights/<%= flight._id %> ">Details</a></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+
+<%- include('../partials/footer') %> 
+</html>
