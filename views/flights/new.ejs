@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>New Flight</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Flights</title>
 </head>
+
 <body>
-    <h2>Enter a New Flight</h2>
+    <nav class="navbar">
+        <a href="/flights/new" class="links current">Add Flight</a>
+        <a href="/flights" class="links">All Flights</a>
+    </nav>
+
+    <a class="all-flights-link" href="/flights">View All Flights</a>
+    <h2 class="title">Enter a New Flight</h2>
     <form action="/flights" method="POST" id="new-flight-form">
-        <fieldset id="new-flight">
-            <legend>Flight Details</legend>
-            Airline:
-            <select name="airline" class="new-choices">
-                <option value="American">American</option>
-                <option value="Southwest">Southwest</option>
-                <option value="United">United</option>
-            </select>
-            <label class="new-choices">Flight Number:
-                <input type="number" name="flightNo" min="10" max="9999"></input>
-            </label>
-            <label name="departs" class="new-choices">Departure Date:
-                <input type="date" name="departs"></input>
-            </label>
-            <input type="submit" value="Add Flight">
-        </fieldset>
+        <div class="new-container">
+            <div class="new-fields">
+                Airline:
+                <select name="airline" class="new-choices">
+                    <option value="American">American</option>
+                    <option value="Southwest">Southwest</option>
+                    <option value="United">United</option>
+                </select>
+            </div>
+            |
+            <div class="new-fields">
+                <label class="new-choices">Flight Number:
+                    <div>
+                        <input type="number" name="flightNo" min="10" max="9999"></input>
+                    </div>
+                </label>
+            </div>
+            |
+            <div class="new-fields">
+                <label name="departs" class="new-choices">Departure Date:
+                    <div>
+                        <input type="date" name="departs"></input>
+                    </div>
+                </label>
+            </div>
+            <button type="submit" class="flight-submit"><i class="fa fa-plane"></i> Add Flight</button>
+        </div>
     </form>
-    <a href="/flights">View All Flights</a>
-</body>
+    <br>
+
+    <%- include('../partials/footer') %>
+
+
 </html>

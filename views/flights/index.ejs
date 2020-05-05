@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width= initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>New Flights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Flights</title>
 </head>
-<%- include('../partials/header') %> 
+
+<nav class="navbar">
+    <div class="home-icon">
+        <a href="/"><i class="fa fa-plane fa-2x"></i></a>
+    </div>
+    <div class="nav-buttons">
+        <a href="/flights/new" class="links">Add Flight</a>
+        <a href="/flights" class="links current">All Flights</a>
+    </div>
+    <div></div>
+</nav>
+
 <body>
-    <h1>Flights</h1>
+    <h1 class="title">Flights</h1>
     <table>
         <thead>
             <th>Airline</th>
@@ -18,16 +32,14 @@
         </thead>
         <tbody>
             <% flights.forEach(function(flight) { %>
-                <tr>
-                    <td id="airline1"><%= flight.airline %></td>
-                    <td id="flightNo1"><%= flight.flightNo %></td>
-                    <td id="departs1"><%= new Date(flight.departs).toLocaleString() %></td>
-                    <td><a href="/flights/<%= flight._id %> ">Details</a></td>
-                </tr>
+            <tr class="flights-container">
+                <td id="airline1"><%= flight.airline %></td>
+                <td id="flightNo1"><%= flight.flightNo %></td>
+                <td id="departs1"><%= new Date(flight.departs).toLocaleString() %></td>
+                <td><a href="/flights/<%= flight._id %> ">Details</a></td>
+            </tr>
             <% }) %>
         </tbody>
     </table>
-</body>
 
-<%- include('../partials/footer') %> 
-</html>
+    <%- include('../partials/footer') %>

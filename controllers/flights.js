@@ -10,18 +10,17 @@ module.exports = {
 };
 
 function createDestination(req, res) {
-    Flight.findById(req.params.id, function(err, flight) {
+    Flight.findById(req.params.id, function (err, flight) {
         flight.destinations.push(req.body);
-        flight.save(function(err) {
+        flight.save(function (err) {
             res.redirect(`/flights/${flight._id}`);
         });
     });
 }
 
 function show(req, res) {
-    Flight.findById(req.params.id, function(err, flight) {
-        console.log(flight);
-        Ticket.find({flight: flight._id}, function(err, tickets) {
+    Flight.findById(req.params.id, function (err, flight) {
+        Ticket.find({ flight: flight._id }, function (err, tickets) {
             res.render('flights/show', {
                 flight,
                 tickets
@@ -31,18 +30,18 @@ function show(req, res) {
 }
 
 function index(req, res) {
-    Flight.find({}, function(err, flights) {
-        res.render('flights/index', {flights});
+    Flight.find({}, function (err, flights) {
+        res.render('flights/index', { flights });
     });
 }
 
 function create(req, res) {
     // airline, flight number, and departure date
     for (let key in req.body) {
-        if(req.body[key] === '') delete req.body[key];
+        if (req.body[key] === '') delete req.body[key];
     }
     const flight = new Flight(req.body);
-    flight.save(function(err) {
+    flight.save(function (err) {
         if (err) return res.render('flights/new');
         res.redirect(`/flights/${flight._id}`);
     });
