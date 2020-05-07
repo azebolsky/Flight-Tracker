@@ -11,35 +11,46 @@
     <title>Flights</title>
 </head>
 
-<nav class="navbar">
-    <div class="home-icon">
-        <a href="/"><i class="fa fa-plane fa-2x"></i></a>
-    </div>
-    <div class="nav-buttons">
-        <a href="/flights/new" class="links">Add Flight</a>
-        <a href="/flights" class="links current">All Flights</a>
-    </div>
-    <div></div>
-</nav>
 
 <body>
-    <h1 class="title">Flights</h1>
-    <table>
-        <thead>
-            <th>Airline</th>
-            <th>Flight Number</th>
-            <th>Departure Date</th>
-        </thead>
-        <tbody>
-            <% flights.forEach(function(flight) { %>
-            <tr class="flights-container">
-                <td id="airline1"><%= flight.airline %></td>
-                <td id="flightNo1"><%= flight.flightNo %></td>
-                <td id="departs1"><%= new Date(flight.departs).toLocaleString() %></td>
-                <td><a href="/flights/<%= flight._id %> ">Details</a></td>
-            </tr>
-            <% }) %>
-        </tbody>
-    </table>
+    <nav class="navbar">
+        <div class="home-icon">
+            <a href="/"><i class="fa fa-plane fa-3x"></i></a>
+        </div>
+        <div class="nav-buttons">
+            <a href="/flights/new" class="links">Add Flight</a>
+            <a href="/flights" class="links current">All Flights</a>
+        </div>
+        <div></div>
+    </nav>
+    <main>
+        <h1 class="title">Flights</h1>
+        <% if (flights.length) { %>
+        <table>
+            <thead>
+                <th>Airline</th>
+                <th>Flight Number</th>
+                <th>Departure Date</th>
+            </thead>
+            <tbody>
+                <% flights.forEach(function(flight) { %>
+                <tr class="flights-container">
+                    <td id="airline1"><%= flight.airline %></td>
+                    <td id="flightNo1"><%= flight.flightNo %></td>
+                    <td id="departs1"><%= new Date(flight.departs).toLocaleString() %></td>
+                    <td><a href="/flights/<%= flight._id %> ">Details</a></td>
+                    <td>
+                        <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="remove-button">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <% } else { %>
+        <%= "No flights have been added." %>
+        <% } %>
+    </main>
 
     <%- include('../partials/footer') %>

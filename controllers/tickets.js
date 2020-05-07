@@ -6,12 +6,12 @@ module.exports = {
 }
 
 function create(req, res) {
-    const ticket = {...req.body, flight: req.params.id};
-    Ticket.create(ticket, function(err) {
+    const ticket = { ...req.body, flight: req.params.id };
+    Ticket.create(ticket, function (err) {
         res.redirect(`/flights/${req.params.id}`)
     });
 }
 
 function newTicket(req, res) {
-    res.render('tickets/new', {flightId: req.params.id});
+    res.render('tickets/new', { flightId: req.params.id });
 }
