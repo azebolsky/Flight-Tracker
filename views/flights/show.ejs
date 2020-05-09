@@ -2,17 +2,23 @@
 
 
 <main class="main-container">
-    <h1 class="title">Flight Details</h1>
+    <h1 class="title"><%= flight.airline %> Flight <%= flight.flightNo %></h1>
     <div class="new-container">
-        <div>Airline: </div>
-        <div><%= flight.airline %></div>
-        <div>Flight Number: </div>
-        <div><%= flight.flightNo %></div>
-        <div>Departure Date</div>
-        <div><%= flight.departs %></div>
+        <div class="new-fields">
+            Airline:
+            <div><%= flight.airline %></div>
+        </div>
+        <div class="new-fields">
+            Flight Number:
+            <div><%= flight.flightNo %></div>
+        </div>
+        <div class="new-fields">
+            Departure Date
+            <div><%= flight.departs %></div>
+        </div>
+        <a href="/flights/<%= flight._id %>/tickets/new">Add Ticket</a>
     </div>
-    <a href="/flights/<%= flight._id %>/tickets/new">Add Ticket</a>
-    <form method="POST" action="/flights/<%= flight._id %>/destinations">
+    <!-- <form method="POST" action="/flights/<%= flight._id %>/destinations">
         Destination:
         <select name="airport" class="new-choices">
             <option value="AUS">AUS</option>
@@ -25,37 +31,21 @@
             <input name="arrival" type="datetime-local">
         </label>
         <input type="submit">
-    </form>
-
-    <% if (flight.destinations.length) { %>
-    <table>
-        <thead>
-            <th>Destination</th>
-            <th>Arrival Date</th>
-        </thead>
-        <tbody>
-            <% flight.destinations.forEach(function(d) { %>
-            <tr>
-                <td><%= d.airport %></td>
-                <td><%= d.arrival.toLocaleDateString() %></td>
-            </tr>
-            <% }) %>
-        </tbody>
-    </table>
-    <% } else { %>
-    <h5>No destinations yet</h5>
-    <% } %>
+    </form> -->
 
     <h3>Tickets Selected</h3>
+    <% if (tickets.length) { %>
     <ul>
         <% tickets.forEach(function(t) { %>
         <li>
-            <% console.log(t) %>
             Seat: <%= t.seat %> -
             Price: <%= t.price %>
         </li>
         <% }) %>
     </ul>
+    <% } else { %>
+    <p>No tickets selected yet</p>
+    <% } %>
 </main>
 
 <%- include('../partials/footer') %>

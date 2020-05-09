@@ -51,6 +51,19 @@
                         </div>
                     </label>
                 </div>
+                <div class="new-fields">
+                    Destination:
+                    <select name="airport" class="new-choices">
+                        <option value="AUS">AUS</option>
+                        <option value="DFW">DFW</option>
+                        <option value="LAX">LAX</option>
+                        <option value="SAN">SAN</option>
+                        <option value="DEN">DEN</option>
+                    </select>
+                    <label>Arrival Date:
+                        <input name="arrival" type="datetime-local">
+                    </label>
+                </div>
                 <button type="submit" class="flight-submit"><i class="fa fa-plane"></i> Add Flight</button>
             </div>
             <a class="all-flights-link" href="/flights">Back to all flights</a>
