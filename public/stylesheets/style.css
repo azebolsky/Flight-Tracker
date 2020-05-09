@@ -54,8 +54,12 @@ main {
   margin: 0 10px;
 }
 
+a {
+  text-decoration: none;
+}
+
 a:hover {
-  color: rgb(120, 66, 171);
+  color: rgb(146, 81, 206);
 }
 
 #new-flight-form {
@@ -77,17 +81,54 @@ a:hover {
   margin-bottom: 20px;
 }
 
-.flights-container {
-  border-radius: 10px;
-  border: 0.8px solid rgb(238, 237, 237);
-  box-shadow: 0px 2px 2px rgb(196, 196, 196);
-  background-color: ghostwhite;
+table {
+  border-collapse: collapse;
+}
+
+th {
+  font-size: 16px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #cecfd5;
+  padding: 10px 25px;
+}
+
+tr[data-href] {
+  cursor: pointer;
+}
+
+tr[data-href]:hover {
+  background-color: rgb(196, 196, 252);
+}
+
+.no-select {
+  cursor: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.main-container {
+  width: 100%;
 }
 
 .background {
   background: url("https://i.imgur.com/0pBHdYz.jpg") no-repeat center fixed;
   background-size: cover;
 } 
+
+.remove-button {
+  width: 60px;
+  height: 30px;
+  font-size: 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 7px;
+  background: red;
+}
 
 @media (max-width: 750px) {
   .new-container {
@@ -100,7 +141,29 @@ a:hover {
   }
 
   .title {
-    font-size: 20px;
+    font-size: 25px;
+  }
+
+  th {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px 5px;
+  }
+
+  .remove-button {
+    width: 42px;
+    height: 20px;
+    font-size: 7px;
+  }
+
+  .main-container {
+    width: 100%;
+  }
+
+  .flights-container {
+    font-size: 10px;
   }
 }
 
@@ -132,16 +195,6 @@ a:hover {
 
 .flight-submit-home:hover {
   background-color: linear-gradient(rgb(179, 122, 149) 0%, rgb(230, 70, 110) 38%);
-}
-
-.remove-button {
-  width: 60px;
-  height: 20px;
-  font-size: 10px;
-  color: white;
-  cursor: pointer;
-  border-radius: 7px;
-  background: red;
 }
 
 .new-choices {

@@ -23,23 +23,22 @@
         </div>
         <div></div>
     </nav>
-    <main>
+    <main class="main-container">
         <h1 class="title">Flights</h1>
         <% if (flights.length) { %>
-        <table>
-            <thead>
+        <table class="flights-container">
+            <thead class="center">
                 <th>Airline</th>
                 <th>Flight Number</th>
                 <th>Departure Date</th>
             </thead>
-            <tbody>
+            <tbody class="center">
                 <% flights.forEach(function(flight) { %>
-                <tr class="flights-container">
-                    <td id="airline1"><%= flight.airline %></td>
-                    <td id="flightNo1"><%= flight.flightNo %></td>
-                    <td id="departs1"><%= new Date(flight.departs).toLocaleString() %></td>
-                    <td><a href="/flights/<%= flight._id %> ">Details</a></td>
-                    <td>
+                <tr data-href="/flights/<%= flight._id %>" class="table-body">
+                    <td class="airline"><%= flight.airline %></td>
+                    <td><%= flight.flightNo %></td>
+                    <td><%= new Date(flight.departs).toLocaleString() %></td>
+                    <td class="no-select">
                         <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST">
                             <button type="submit" class="remove-button">Remove</button>
                         </form>
@@ -52,5 +51,14 @@
         <%= "No flights have been added." %>
         <% } %>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const row = document.querySelectorAll("tr[data-href]");
+            row.forEach(r => r.addEventListener("click", () => {
+                window.location.href = r.dataset.href;
+            }))
+        });
+    </script>
 
     <%- include('../partials/footer') %>
