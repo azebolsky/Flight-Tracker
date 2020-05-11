@@ -8,6 +8,7 @@ module.exports = {
 function create(req, res) {
     const ticket = { ...req.body, flight: req.params.id };
     Ticket.create(ticket, function (err) {
+        // console.log(`flight: ${req.params.id}`);
         res.redirect(`/flights/${req.params.id}`)
     });
 }

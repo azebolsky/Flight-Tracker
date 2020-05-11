@@ -7,8 +7,32 @@ module.exports = {
     index,
     show,
     createDestination,
-    delete: deleteFlight
+    delete: deleteFlight,
+    deleteTicket
 };
+
+function deleteTicket(req, res) {
+    Ticket.findById(req.params.id, function (err, ticket) {
+        console.log(`error: ${err}`)
+        console.log(`tickeeeeeeeet: ${ticket}`)
+        ticket.remove();
+        ticket.save(function (err) {
+            res.redirect(`/flights/${req.params.id}`)
+        })
+    });
+}
+
+// function show(req, res) {
+//     Flight.findById(req.params.id, function (err, flight) {
+//         Ticket.find({ flight: flight._id }, function (err, tickets) {
+//             console.log(`===>>ticket: ${tickets}`)
+//             res.render('flights/show', {
+//                 flight,
+//                 tickets
+//             });
+//         });
+//     });
+// }
 
 function deleteFlight(req, res) {
     Flight.findById(req.params.id, function (err, flight) {
@@ -31,6 +55,7 @@ function createDestination(req, res) {
 function show(req, res) {
     Flight.findById(req.params.id, function (err, flight) {
         Ticket.find({ flight: flight._id }, function (err, tickets) {
+            console.log(`===>>ticket: ${tickets.flight}`)
             res.render('flights/show', {
                 flight,
                 tickets

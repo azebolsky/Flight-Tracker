@@ -1,51 +1,65 @@
 <%- include('../partials/header') %>
 
-
 <main class="main-container">
     <h1 class="title"><%= flight.airline %> Flight <%= flight.flightNo %></h1>
-    <div class="new-container">
-        <div class="new-fields">
+    <div class="show-container">
+        <!-- <div class="new-fields">
             Airline:
             <div><%= flight.airline %></div>
         </div>
         <div class="new-fields">
             Flight Number:
             <div><%= flight.flightNo %></div>
+        </div> -->
+        <div class="new-fields">
+            Destination:
+            <div><%= flight.airport %></div>
         </div>
         <div class="new-fields">
-            Departure Date
+            Departure Date:
             <div><%= flight.departs %></div>
         </div>
-        <a href="/flights/<%= flight._id %>/tickets/new">Add Ticket</a>
     </div>
-    <!-- <form method="POST" action="/flights/<%= flight._id %>/destinations">
-        Destination:
-        <select name="airport" class="new-choices">
-            <option value="AUS">AUS</option>
-            <option value="DFW">DFW</option>
-            <option value="LAX">LAX</option>
-            <option value="SAN">SAN</option>
-            <option value="DEN">DEN</option>
-        </select>
-        <label>Arrival Date:
-            <input name="arrival" type="datetime-local">
-        </label>
-        <input type="submit">
-    </form> -->
-
-    <h3>Tickets Selected</h3>
-    <% if (tickets.length) { %>
-    <ul>
-        <% tickets.forEach(function(t) { %>
-        <li>
-            Seat: <%= t.seat %> -
-            Price: <%= t.price %>
-        </li>
-        <% }) %>
-    </ul>
-    <% } else { %>
-    <p>No tickets selected yet</p>
-    <% } %>
+    <br><br>
+    <div class="ticket-container">
+        <div>
+            <form method="POST" action="/flights/<%= flight._id %>/tickets">
+                <h4>Add Ticket</h4>
+                <div class="new-fields">
+                    <div>
+                        Coach ($100)
+                        <input name="price" value="100" type="checkbox">
+                    </div>
+                    <div>
+                        First Class ($300)
+                        <input name="price" value="300" type="checkbox">
+                    </div>
+                    <input class="ticket-input" name="seat" required pattern="[A-D][1-9]\d?"
+                        placeholder="Seat (A1-A9 - D1-D9)">
+                    <button type="submit" class="flight-submit"><i class="fa fa-ticket" aria-hidden="true"></i>
+                        Add</button>
+                </div>
+            </form method="POST">
+        </div>
+        <div class="card">
+            <% if (tickets.length) { %>
+            <% tickets.forEach(function(t) { %>
+            <div>
+                Seat: <%= t.seat %> -
+                Price: $<%= t.price %>.00
+                <!-- <%= t.flight %>
+                <%= t._id %> -->
+                <!-- <form action="/flights/<%= t.flight %>/tickets/<%= t._id %> ?_method=DELETE" method="POST">
+                    <button type="submit" class="remove-button">X</button>
+                </form> -->
+            </div>
+            <% }) %>
+            <% } else { %>
+            <p>No tickets selected yet</p>
+            <% } %>
+        </div>
+    </div>
+    <a class="all-flights-link" href="/flights">Back to all flights</a>
 </main>
 
 <%- include('../partials/footer') %>

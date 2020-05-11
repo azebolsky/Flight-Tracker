@@ -30,6 +30,7 @@
             <thead class="center">
                 <th>Airline</th>
                 <th>Flight Number</th>
+                <th>Destination</th>
                 <th>Departure Date</th>
             </thead>
             <tbody class="center">
@@ -37,6 +38,7 @@
                 <tr data-href="/flights/<%= flight._id %>" class="table-body">
                     <td class="airline"><%= flight.airline %></td>
                     <td><%= flight.flightNo %></td>
+                    <td><%= flight.airport %> </td>
                     <td><%= new Date(flight.departs).toLocaleString() %></td>
                     <td class="no-select">
                         <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST">
@@ -49,6 +51,8 @@
         </table>
         <% } else { %>
         <%= "No flights have been added." %>
+        <br><br>
+        <a href="/flights/new" class="links">Add Flight</a>
         <% } %>
     </main>
 
