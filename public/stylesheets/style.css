@@ -101,19 +101,17 @@ a:hover {
 }
 
 .ticket-container {
-  width: 90%;
+  width: 100%;
   height: 50%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: flex-start;
-  border: 1px solid grey;
 }
 
 .card-container {
-  width: 60%;
+  width: 45%;
   height: 100%;
-  background-color: red;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -121,7 +119,6 @@ a:hover {
 
 .card {
   width: 100%;
-  background-color: blue;
   display: flex;
   flex-wrap: wrap;
 }
@@ -184,14 +181,6 @@ tr[data-href]:hover {
   background: red;
 }
 
-.ticket-input {
-  height: 30px;
-  width: 150px;
-  border-radius: 5px;
-  text-align: center;
-  margin: 5px;
-}
-
 @media (max-width: 750px) {
   .new-container {
     flex-direction: column;
@@ -234,6 +223,10 @@ tr[data-href]:hover {
 
   .new-fields {
     font-size: 10px;
+  }
+
+  .card {
+    font-size: 8px;
   }
 }
 
@@ -287,6 +280,7 @@ tr[data-href]:hover {
   text-align: left;
   font-size: 15px;
   margin-top: 50px;
+  /* width: 100%; */
 }
 
 .footer {

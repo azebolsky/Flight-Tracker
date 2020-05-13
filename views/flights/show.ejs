@@ -47,8 +47,8 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="flight-submit" id="first-submit" disabled="disabled"><i
-                            class="fa fa-ticket" aria-hidden="true"></i>
+                    <button type="submit" class="flight-submit" id="first-submit"><i class="fa fa-ticket"
+                            aria-hidden="true"></i>
                         Add</button>
                 </form>
                 <form method="POST" action="/flights/<%= flight._id %>/tickets/" id="coach-form">
@@ -87,18 +87,20 @@
                 </form>
         </div>
         <div class="card-container">
-            <h4>Seats</h4>
-            <div class="card">
-                <% if (tickets.length) { %>
-                <% tickets.forEach(function(t) { %>
-                <div class="card-content">
-                    <%= t.seat %> -
-                    $<%= t.price %>.00
+            <div>
+                <h4>Seats</h4>
+                <div class="card">
+                    <% if (tickets.length) { %>
+                    <% tickets.forEach(function(t) { %>
+                    <div class="card-content">
+                        <%= t.seat %> -
+                        $<%= t.price %>.00
+                    </div>
+                    <% }) %>
+                    <% } else { %>
+                    <p>No tickets selected yet</p>
+                    <% } %>
                 </div>
-                <% }) %>
-                <% } else { %>
-                <p>No tickets selected yet</p>
-                <% } %>
             </div>
         </div>
     </div>
