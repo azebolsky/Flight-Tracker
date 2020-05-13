@@ -10,6 +10,5 @@ router.get('/', flightsCtrl.index);
 router.get('/:id', flightsCtrl.show);
 router.post('/:id/destinations', flightsCtrl.createDestination);
 router.post('/:id', flightsCtrl.delete);
-router.post('/:id/tickets/:id', flightsCtrl.deleteTicket)
 
 module.exports = router;

@@ -9,8 +9,7 @@ const ticketSchema = new Schema({
     },
     price: {
         type: Number,
-        min: 100,
-        required: true
+        min: 100
     },
     flight: {
         type: Schema.Types.ObjectId,
