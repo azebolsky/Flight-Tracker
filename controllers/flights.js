@@ -4,7 +4,7 @@ const Ticket = require("../models/ticket");
 module.exports = {
   new: newFlight,
   create,
-  //   index,
+  index,
   show,
   createDestination,
   delete: deleteFlight,
@@ -41,12 +41,12 @@ function show(req, res) {
   });
 }
 
-// function index(req, res) {
-//   Flight.find({}, function (err, flights) {
-//     console.log(`index flight: ${flights}, ${err}`);
-//     res.render("flights/index", { flights });
-//   });
-// }
+function index(req, res) {
+  Flight.find({}, function (err, flights) {
+    console.log(`index flight: ${flights}, ${err}`);
+    res.render("flights/index", { flights });
+  });
+}
 
 function create(req, res) {
   // airline, flight number, and departure date
