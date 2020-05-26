@@ -33,7 +33,7 @@ function show(req, res) {
 function index(req, res) {
   Flight.find({}, function (err, flights) {
     if (flights) {
-      console.log(`index flight: ${flights}, ${err}`);
+      console.log(`index flights: ${flights}, ${err}`);
       res.render("flights/index", { flights });
     } else {
       res.render("flights/index");
