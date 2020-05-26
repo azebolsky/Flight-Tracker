@@ -6,7 +6,7 @@ const flightsCtrl = require("../controllers/flights");
 // controller action is new so '/new'
 router.get("/new", flightsCtrl.new);
 router.post("/", flightsCtrl.create);
-router.get("/flights", flightsCtrl.index);
+router.get("/", flightsCtrl.index);
 router.get("/:id", flightsCtrl.show);
 router.post("/:id", flightsCtrl.delete);
 
