@@ -4,6 +4,7 @@ const flightsCtrl = require("../controllers/flights");
 
 // GET /flights/new
 // controller action is new so '/new'
+
 router.get("/new", flightsCtrl.new);
 router.post("/", flightsCtrl.create);
 router.get("/", flightsCtrl.index);

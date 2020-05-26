@@ -11,7 +11,7 @@ module.exports = {
 
 function deleteFlight(req, res) {
   Flight.findById(req.params.id, function (err, flight) {
-    console.log(`deleteFlight: ${flight}`);
+    console.log(`deleteFlight: ${flight}, ${err}`);
     flight.remove();
     flight.save(function (err) {
       res.redirect("/flights");
@@ -32,6 +32,7 @@ function show(req, res) {
 
 function index(req, res) {
   Flight.find({}, function (err, flights) {
+    console.log(`=====================>>>>>>>><<<<<<<< error line 35: ${err}`);
     if (flights) {
       console.log(`index flights: ${flights}, ${err}`);
       res.render("flights/index", { flights });
@@ -43,9 +44,10 @@ function index(req, res) {
 
 function create(req, res) {
   // airline, flight number, and departure date
-  for (let key in req.body) {
-    if (req.body[key] === "") delete req.body[key];
-  }
+  //   for (let key in req.body) {
+  //     console.log(`req.body: ${req.body} and key: ${key}`);
+  //     if (req.body[key] === "") delete req.body[key];
+  //   }
   const flight = new Flight(req.body);
   flight.save(function (err) {
     if (err) return res.render("flights/new");
