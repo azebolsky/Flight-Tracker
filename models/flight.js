@@ -16,12 +16,13 @@ const flightSchema = new Schema(
     },
     departs: {
       type: Date,
-      default: function () {
-        const date = new Date();
-        const nextYear = new Date().getFullYear() + 1;
-        date.setFullYear(nextYear);
-        return date;
-      },
+      required: true,
+      // default: function () {
+      //   const date = new Date();
+      //   const nextYear = new Date().getFullYear() + 1;
+      //   date.setFullYear(nextYear);
+      //   return date;
+      // },
     },
     airport: {
       type: String,
