@@ -6,7 +6,6 @@ module.exports = {
   create,
   index,
   show,
-  createDestination,
   delete: deleteFlight,
 };
 
@@ -16,16 +15,6 @@ function deleteFlight(req, res) {
     flight.remove();
     flight.save(function (err) {
       res.redirect("/flights");
-    });
-  });
-}
-
-function createDestination(req, res) {
-  Flight.findById(req.params.id, function (err, flight) {
-    console.log(`createDestination: ${flight}`);
-    flight.destinations.push(req.body);
-    flight.save(function (err) {
-      res.redirect(`/flights/${flight._id}`);
     });
   });
 }
@@ -43,8 +32,12 @@ function show(req, res) {
 
 function index(req, res) {
   Flight.find({}, function (err, flights) {
-    console.log(`index flight: ${flights}, ${err}`);
-    res.render("flights/index", { flights });
+    if (flights) {
+      console.log(`index flight: ${flights}, ${err}`);
+      res.render("flights/index", { flights });
+    } else {
+      res.render("flights/index");
+    }
   });
 }
 
